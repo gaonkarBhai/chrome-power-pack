@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Focus Timer",
+    "version": "1.0.0",
+    "description": "A simple timer to help you focus on your work",
+    "icons": {
+        "128": "icon.png",
+        "48": "icon.png",
+        "16": "icon.png"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "icon.png",
+        "default_title": "Focus Timer"
+    },
+    "permissions":["storage","alarms","notifications"],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
