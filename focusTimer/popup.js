@@ -3,17 +3,33 @@ const deleteTask = document.getElementById("delete-task");
 const startBtn = document.getElementById("start-btn");
 const stopBtn = document.getElementById("stop-btn");
 const resetBtn = document.getElementById("reset-btn");
+const time = document.getElementById("time");
+
+function updateTime() {
+  chrome.storage.local.get(["timer", "timeLimit"], (res) => {
+    const minutes = `${res.timeLimit - Math.ceil(res.timer / 60)}`.padStart(
+      2,
+      "0"
+    );
+    let second = "00";
+    if (res.timer % 60 != 0) {
+      second = `${60 - (res.timer % 60)}`.padStart(2, "0");
+    }
+    time.textContent = `${minutes}:${second}`;
+  });
+}
+updateTime();
+setInterval(updateTime, 1000);
 
 startBtn.addEventListener("click", () => {
   chrome.storage.local.set({ isRunning: true });
-})
+});
 stopBtn.addEventListener("click", () => {
   chrome.storage.local.set({ isRunning: false });
-})
+});
 resetBtn.addEventListener("click", () => {
-  chrome.storage.local.set({ timer: 0,isRunning:false });
-})
-
+  chrome.storage.local.set({ timer: 0, isRunning: false });
+});
 
 let taskArr = [];
 

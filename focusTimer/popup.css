@@ -6,7 +6,10 @@
 body{
     width: 300px;
     height: 300px;
-    padding: 1rem;
+    padding: 5px;
+    border-radius: 5px;
+    background: rgb(208, 231, 236);
+        background: linear-gradient(90deg, rgba(208, 231, 236, 1) 0%, rgba(242, 183, 234, 0.8183648459383753) 57%, rgba(252, 189, 194, 1) 94%);
 }
 .timer{
     display: flex;
@@ -20,4 +23,64 @@ body{
     margin-bottom: 1rem;
 }
 
-/*  */
+.control-btns{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+    width: 100%;
+    /* margin-top: 1rem; */
+}
+
+.control-btns button{
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 5px;
+}
+
+.tasks-container{
+    display: flex;
+    flex-direction: column;
+    border-top: 1px dashed black;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin: 5px 0;
+}
+
+.tasks-container-control{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+    margin-top: 5px;
+}
+
+.tasks-container-control button{
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 5px;
+}
+
+
+#task-container input{
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 5px;
+    margin-right: 4px;
+}

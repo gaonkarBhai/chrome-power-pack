@@ -8,18 +8,20 @@
 </head>
 <body>
     <div class="timer">
-        <h1>00:00</h1>
-        <div class="">
+        <h1 id="time">00:00</h1>
+        <div class="control-btns">
             <button id="start-btn">Start </button>
             <button id="stop-btn">Stop </button>
             <button id="reset-btn">Reset </button>
         </div>
     </div>
-    <div class="">
-        <button id="add-task">Add task</button>
-        <button id="delete-task">delete task</button>
+    <div class="tasks-container">
+        <div class="tasks-container-control">
+            <button id="add-task">Add task</button>
+            <button id="delete-task">delete task</button>
+        </div>
+        
         <div id="task-container">
-            <!--  -->
         </div>
     </div>
     <script src="popup.js"></script>
