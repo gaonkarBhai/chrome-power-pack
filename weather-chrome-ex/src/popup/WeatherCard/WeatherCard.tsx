@@ -1,16 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import { OpenWeatherData, getWeatherData } from '../../utilities/api'
-import { Box, Card, CardContent, Typography } from '@material-ui/core'
+import { Box, Button, Card, CardActions, CardContent, Typography } from '@material-ui/core'
+
+type WeatherCardState = 'loading' | 'error' | 'success'
 
 const WeatherCard: React.FC<{
     city: string,
-}> = ({ city }) => {
+    onDelete?: () => void
+}> = ({ city, onDelete }) => {
     const [weatherData, setweatherData] = useState<OpenWeatherData | null>(null)
+    const [cardState, setCardState] = useState<WeatherCardState>("loading")
+
     useEffect(() => {
-        getWeatherData(city).then((res) => { setweatherData(res) }).catch((err) => console.log(err))
+        getWeatherData(city).then((res) => {
+            setweatherData(res)
+            setCardState("success")
+        }).catch((err) => {
+            console.log(err)
+            setCardState("error")
+        })
     }, [city])
-    if (!weatherData) {
-        return (<div>Loading...</div>)
+    if (cardState === 'loading' || cardState === 'error') {
+        return (
+            <Box mx="4px" my={'10px'}>
+                <Card>
+                    <CardContent>
+                        {cardState === 'loading' ? 'loading' : 'Error could not load weather data'}
+                    </CardContent>
+                    <CardActions>
+                        <Button onClick={onDelete} color='secondary'>clear</Button>
+                    </CardActions>
+                </Card>
+            </Box>
+            )
     }
     return (
         <Box mx="4px" my={'10px'}>
@@ -20,6 +42,9 @@ const WeatherCard: React.FC<{
                     <Typography variant="body1">{Math.round(weatherData.main.temp)}</Typography>
                     <Typography variant="body1">Feel's like {Math.round(weatherData.main.feels_like)}</Typography>
                 </CardContent>
+                <CardActions>
+                    <Button onClick={onDelete} color='secondary'>Delete</Button>
+                </CardActions>
             </Card>
         </Box>
     )

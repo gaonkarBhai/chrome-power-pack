@@ -1,0 +1,11 @@
+{
+    "manifest_version": 3,
+    "name": "Anime Searcher",
+    "version": "1.0.0",
+    "description": "search anime",
+
+    "permissions":["tabs","contextMenus","search"],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
